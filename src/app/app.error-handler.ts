@@ -11,7 +11,6 @@ export class ErroHandler {
         }else {
             errorMessage = erro.toString();
         }
-        console.log(errorMessage);
         return Observable.throw(errorMessage);
     }
 }

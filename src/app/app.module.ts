@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-
+import { FormsModule} from '@angular/forms';
 
 import { ROUTES } from './app.routes';
 
@@ -20,6 +20,9 @@ import { CarrinhoComponent } from './restaurante-detalhe/carrinho/carrinho.compo
 import { MenuItemComponent } from './restaurante-detalhe/menu-item/menu-item.component';
 import { ReviewsComponent } from './restaurante-detalhe/reviews/reviews.component';
 import { CarrinhoServico } from 'app/restaurante-detalhe/carrinho/carrinho.service';
+import { OrderComponent } from './order/order.component';
+import { InputComponent } from './shared/input/input.component';
+import { RadioComponent } from './shared/radio/radio.component';
 
 
 @NgModule({
@@ -34,11 +37,15 @@ import { CarrinhoServico } from 'app/restaurante-detalhe/carrinho/carrinho.servi
     MenuComponent,
     CarrinhoComponent,
     MenuItemComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    OrderComponent,
+    InputComponent,
+    RadioComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [RestauranteService, CarrinhoServico, {provide: LOCALE_ID, useValue: 'pt-BR'}],

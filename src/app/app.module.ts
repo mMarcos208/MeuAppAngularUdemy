@@ -23,6 +23,8 @@ import { CarrinhoServico } from 'app/restaurante-detalhe/carrinho/carrinho.servi
 import { OrderComponent } from './order/order.component';
 import { InputComponent } from './shared/input/input.component';
 import { RadioComponent } from './shared/radio/radio.component';
+import { OrderItemComponent } from './order/order-item/order-item.component';
+import { OrderService } from 'app/order/orderService';
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import { RadioComponent } from './shared/radio/radio.component';
     ReviewsComponent,
     OrderComponent,
     InputComponent,
-    RadioComponent
+    RadioComponent,
+    OrderItemComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,7 @@ import { RadioComponent } from './shared/radio/radio.component';
     FormsModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [RestauranteService, CarrinhoServico, {provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [RestauranteService, CarrinhoServico, OrderService ,{provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

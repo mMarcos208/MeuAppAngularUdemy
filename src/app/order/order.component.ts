@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { RadioOptions } from "../shared/radio/radio.model";
 import { OrderService } from "./orderService";
 import { CarrinhoItem } from "app/restaurante-detalhe/carrinho/carrinho.model";
+import { Order, OrdemItem } from "./order.model";
 
 @Component({
   selector: "mt-order",
@@ -14,8 +15,12 @@ export class OrderComponent implements OnInit {
     { label: "Cartão Refeição", value: "REF" }
   ];
 
+  delivery: number = 8;
+
+
   constructor(private orderService: OrderService) {}
 
+  
   ngOnInit() {}
 
   cartItems(): CarrinhoItem[] {
@@ -33,4 +38,8 @@ export class OrderComponent implements OnInit {
   remove(item: CarrinhoItem) {
     this.orderService.remove(item);
   }
+  itemsValue(): number {
+    return this.orderService.itemsValue();
+  }
+
 }

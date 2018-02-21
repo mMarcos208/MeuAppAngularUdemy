@@ -1,6 +1,10 @@
 import { Injectable } from "@angular/core";
 import { CarrinhoServico } from "../restaurante-detalhe/carrinho/carrinho.service";
 import { CarrinhoItem } from "../restaurante-detalhe/carrinho/carrinho.model";
+import { Order } from "app/order/order.model";
+import { Observable } from 'rxjs/Observable';
+import { Http } from '@angular/http';
+import  'rxjs/add/operator/map';
 
 @Injectable()
 export class OrderService {
@@ -21,4 +25,12 @@ export class OrderService {
   remove(item: CarrinhoItem){
     this.cartService.removeItem(item)
   }
+
+  itemsValue(): number{
+    return this.cartService.total();
+  }
+
+  //checkOrder(order: Order) : Observable <string> {
+
+ // }
 }

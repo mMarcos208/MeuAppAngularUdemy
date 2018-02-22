@@ -42,4 +42,15 @@ export class OrderComponent implements OnInit {
     return this.orderService.itemsValue();
   }
 
+  checkOrder(order: Order) {
+    order.orderItens = this.cartItems().map((item:CarrinhoItem) =>  
+    new OrdemItem(item.quantidade, item.menuItem.id));
+
+    this.orderService.checkOrder(order)
+    .subscribe((orderId: string) => {
+      console.log(orderId);
+      this.orderService.clear();
+    });
+  }
+
 }

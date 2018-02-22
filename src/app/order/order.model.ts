@@ -1,7 +1,8 @@
 class Order{
-    constructor(public adress: string, public numero: string,
-        public complemento?: string,
-        public pagamento?: string,
+    constructor(public adress: string, 
+        public number: string,
+        public optional?: string,
+        public payment?: string,
         public orderItens?: OrdemItem [],
     ){}
 }

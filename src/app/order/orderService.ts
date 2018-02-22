@@ -2,39 +2,51 @@ import { Injectable } from "@angular/core";
 import { CarrinhoServico } from "../restaurante-detalhe/carrinho/carrinho.service";
 import { CarrinhoItem } from "../restaurante-detalhe/carrinho/carrinho.model";
 import { Order } from "app/order/order.model";
+<<<<<<< HEAD
 import { Observable } from 'rxjs/Observable';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import  'rxjs/add/operator/map';
+=======
+import { Observable } from "rxjs/Observable";
+import { Http, Headers, RequestOptions } from "@angular/http";
+import "rxjs/add/operator/map";
+>>>>>>> 52498f9beb1c8d03cfd266ccd50e307c64347d76
 import { MEAT_API } from "app/app.api";
 
 @Injectable()
 export class OrderService {
   constructor(private cartService: CarrinhoServico, private http: Http) {}
+<<<<<<< HEAD
   
   CarrinhoItems(): CarrinhoItem[]{
+=======
+
+  CarrinhoItems(): CarrinhoItem[] {
+>>>>>>> 52498f9beb1c8d03cfd266ccd50e307c64347d76
     return this.cartService.items;
   }
 
-  increaseQty(item: CarrinhoItem){
-    this.cartService.increaseQty(item)
+  increaseQty(item: CarrinhoItem) {
+    this.cartService.increaseQty(item);
   }
 
-  decreaseQty(item: CarrinhoItem){
-    this.cartService.decreaseQty(item)
+  decreaseQty(item: CarrinhoItem) {
+    this.cartService.decreaseQty(item);
   }
 
-  remove(item: CarrinhoItem){
-    this.cartService.removeItem(item)
+  remove(item: CarrinhoItem) {
+    this.cartService.removeItem(item);
   }
 
-  itemsValue(): number{
+  itemsValue(): number {
     return this.cartService.total();
   }
+  checkOrder(order: Order): Observable<Order> {
+    const heards = new Headers();
+    heards.append('Content-Type','application/json');
 
-  checkOrder(order: Order) : Observable <string> {
-    const heardes = new Headers();
-    heardes.append('Content-Type','application/json');
-    return this.http.post(`${MEAT_API}/orders`, JSON.stringify(order), new RequestOptions({heardes: heardes }))
+    return this.http.post(`${MEAT_API}/orders`, JSON.stringify(order),
+    new RequestOptions({headers: heards}))
     .map(response => response.json());
   }
   clear(){

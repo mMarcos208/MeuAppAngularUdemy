@@ -3,12 +3,13 @@ import { CarrinhoServico } from "../restaurante-detalhe/carrinho/carrinho.servic
 import { CarrinhoItem } from "../restaurante-detalhe/carrinho/carrinho.model";
 import { Order } from "app/order/order.model";
 import { Observable } from 'rxjs/Observable';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import  'rxjs/add/operator/map';
+import { MEAT_API } from "app/app.api";
 
 @Injectable()
 export class OrderService {
-  constructor(private cartService: CarrinhoServico) {}
+  constructor(private cartService: CarrinhoServico, private http: Http) {}
   
   CarrinhoItems(): CarrinhoItem[]{
     return this.cartService.items;
@@ -30,7 +31,13 @@ export class OrderService {
     return this.cartService.total();
   }
 
-  //checkOrder(order: Order) : Observable <string> {
-
- // }
+  checkOrder(order: Order) : Observable <string> {
+    const heardes = new Headers();
+    heardes.append('Content-Type','application/json');
+    return this.http.post(`${MEAT_API}/orders`, JSON.stringify(order), new RequestOptions({heardes: heardes }))
+    .map(response => response.json());
+  }
+  clear(){
+    this.cartService.clear();
+  }
 }

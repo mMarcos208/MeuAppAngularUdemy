@@ -2,27 +2,17 @@ import { Injectable } from "@angular/core";
 import { CarrinhoServico } from "../restaurante-detalhe/carrinho/carrinho.service";
 import { CarrinhoItem } from "../restaurante-detalhe/carrinho/carrinho.model";
 import { Order } from "app/order/order.model";
-<<<<<<< HEAD
-import { Observable } from 'rxjs/Observable';
-import { Http, Headers, RequestOptions } from '@angular/http';
-import  'rxjs/add/operator/map';
-=======
+
 import { Observable } from "rxjs/Observable";
 import { Http, Headers, RequestOptions } from "@angular/http";
 import "rxjs/add/operator/map";
->>>>>>> 52498f9beb1c8d03cfd266ccd50e307c64347d76
 import { MEAT_API } from "app/app.api";
 
 @Injectable()
 export class OrderService {
   constructor(private cartService: CarrinhoServico, private http: Http) {}
-<<<<<<< HEAD
-  
-  CarrinhoItems(): CarrinhoItem[]{
-=======
 
   CarrinhoItems(): CarrinhoItem[] {
->>>>>>> 52498f9beb1c8d03cfd266ccd50e307c64347d76
     return this.cartService.items;
   }
 

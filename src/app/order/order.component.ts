@@ -21,15 +21,7 @@ export class OrderComponent implements OnInit {
 
   constructor(private orderService: OrderService, private router: Router) {}
 
-<<<<<<< HEAD
-  constructor(private orderService: OrderService) { }
-
-
   ngOnInit() { }
-=======
-  ngOnInit() {}
->>>>>>> 52498f9beb1c8d03cfd266ccd50e307c64347d76
-
   cartItems(): CarrinhoItem[] {
     return this.orderService.CarrinhoItems();
   }

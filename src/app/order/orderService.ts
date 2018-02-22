@@ -31,7 +31,7 @@ export class OrderService {
     return this.cartService.total();
   }
 
-  checkOrder(order: Order): Observable<string> {
+  checkOrder(order: Order): Observable<Order> {
     const heards = new Headers();
     heards.append('Content-Type','application/json');
 

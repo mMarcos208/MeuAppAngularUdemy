@@ -4,7 +4,7 @@
 
 <section class="content">
   <section class="invoice">
-    <form novalidate #form="ngForm">
+    <form novalidate [formGroup]="orderForm">
       <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
@@ -18,18 +18,18 @@
         </div>
         <div class="col-sm-6 col-xs-12">
           <mt-input-container erroMensage="Campo obrigatório" label="Nome">
-            <input name="name" required ngModel class="form-control" placeholder="Nome">
+            <input formControlName="name" class="form-control" placeholder="Nome">
           </mt-input-container>
         </div>
         <div class="col-sm-2 col-xs-6">
           <mt-input-container erroMensage="E-mail inválido" label="E-mail">
-            <input name="email" required ngModel class="form-control" id="inputEmail" placeholder="E-mail">
+            <input formControlName="email" class="form-control" id="inputEmail" placeholder="E-mail">
           </mt-input-container>
         </div>
         <div class="col-sm-4 col-xs-6">
           <mt-input-container erroMensage="E-mail inválido" label="E-mail">
-            <input type="text" required class="form-control" name="confirmEmail" 
-            ngModel id="inputConfirmEmail" placeholder="Confirme seu e-mail">
+            <input type="text" class="form-control" formControlName="confirmEmail" 
+             id="inputConfirmEmail" placeholder="Confirme seu e-mail">
           </mt-input-container>
         </div>
       </div>
@@ -39,17 +39,17 @@
         </div>
         <div class="col-sm-6 col-xs-12">
           <mt-input-container erroMensage="Campo obrigatório e com 5 caracateres" label="Endereço">
-            <input name="adress" required ngModel minlength="5" class="form-control" placeholder="Endereço">
+            <input formControlName="adress" class="form-control" placeholder="Endereço">
           </mt-input-container>
         </div>
         <div class="col-sm-2 col-xs-6">
           <mt-input-container erroMensage="Campo obrigatório" label="Numero">
-            <input name="number" required ngModel class="form-control" pattern="^[0-9]*$" id="inputSuccess" placeholder="Número">
+            <input formControlName="number" class="form-control" pattern="^[0-9]*$" id="inputSuccess" placeholder="Número">
           </mt-input-container>
         </div>
         <div class="col-sm-4 col-xs-6">
           <mt-input-container erroMensage="Campo obrigatório" label="Numero">
-            <input type="text" class="form-control" name="optional" ngModel id="inputSuccess" placeholder="Complemento">
+            <input type="text" class="form-control" formControlName="optional"  id="inputSuccess" placeholder="Complemento">
           </mt-input-container>
         </div>
         <!-- /.col -->
@@ -73,7 +73,7 @@
           <p class="lead">Formas de Pagamento:</p>
 
           <div class="form-group">
-            <mt-radio [radionOption]="payment" name="paymentOption" ngModel required></mt-radio>
+            <mt-radio [radionOption]="payment" formControlName="paymentOption"></mt-radio>
           </div>
 
         </div>
@@ -90,7 +90,7 @@
 
     <div class="row">
       <div class="col-xs-12">
-        <button (click)="checkOrder(form.value)" class="btn btn-success pull-right" [disabled]="!form.valid || cartItems().length === 0">
+        <button (click)="checkOrder(orderForm.value)" class="btn btn-success pull-right" [disabled]="!orderForm.valid || cartItems().length === 0">
           <i class="fa fa-credit-card"></i> Concluir Pedido
         </button>
       </div>

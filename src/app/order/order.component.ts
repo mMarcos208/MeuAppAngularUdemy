@@ -26,9 +26,19 @@ export class OrderComponent implements OnInit {
     private orderService: OrderService,
     private router: Router,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.orderForm = this.formBuilder.group({
+      name: this.formBuilder.control(''),
+      email: this.formBuilder.control(''),
+      confirmEmail: this.formBuilder.control(''),
+      adress: this.formBuilder.control(''),
+      number: this.formBuilder.control(''),
+      optional: this.formBuilder.control(''),
+      paymentOption: this.formBuilder.control('')
+    });
+  }
   cartItems(): CarrinhoItem[] {
     return this.orderService.CarrinhoItems();
   }

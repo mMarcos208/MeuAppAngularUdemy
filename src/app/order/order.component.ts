@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { RadioOptions } from "../shared/radio/radio.model";
 import { OrderService } from "./orderService";
 import { CarrinhoItem } from "app/restaurante-detalhe/carrinho/carrinho.model";
@@ -14,6 +14,8 @@ import { Observable } from "rxjs/Observable";
 export class OrderComponent implements OnInit {
   orderForm: FormGroup;
 
+  numberPatern = /^[0-9]*$/;
+  
   payment: RadioOptions[] = [
     { label: "Dinheiro", value: "MON" },
     { label: "Cartão de Débito", value: "DEB" },
@@ -30,13 +32,13 @@ export class OrderComponent implements OnInit {
 
   ngOnInit() {
     this.orderForm = this.formBuilder.group({
-      name: this.formBuilder.control(''),
-      email: this.formBuilder.control(''),
-      confirmEmail: this.formBuilder.control(''),
-      adress: this.formBuilder.control(''),
-      number: this.formBuilder.control(''),
+      name: this.formBuilder.control('', [Validators.required, Validators.minLength(5)] ),
+      email: this.formBuilder.control('',[Validators.required, Validators.email]),
+      confirmEmail: this.formBuilder.control('',[Validators.required, Validators.email]),
+      adress: this.formBuilder.control('',[Validators.required]),
+      number: this.formBuilder.control('',[Validators.required, Validators.pattern(this.numberPatern)]),
       optional: this.formBuilder.control(''),
-      paymentOption: this.formBuilder.control('')
+      paymentOption: this.formBuilder.control('',[Validators.required])
     });
   }
   cartItems(): CarrinhoItem[] {

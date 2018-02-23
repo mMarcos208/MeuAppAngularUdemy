@@ -1,16 +1,19 @@
 import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder } from "@angular/forms";
 import { RadioOptions } from "../shared/radio/radio.model";
 import { OrderService } from "./orderService";
 import { CarrinhoItem } from "app/restaurante-detalhe/carrinho/carrinho.model";
 import { Order, OrdemItem } from "./order.model";
 import { Router } from "@angular/router";
-import { Observable } from 'rxjs/Observable';
+import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: "mt-order",
   templateUrl: "./order.component.html"
 })
 export class OrderComponent implements OnInit {
+  orderForm: FormGroup;
+
   payment: RadioOptions[] = [
     { label: "Dinheiro", value: "MON" },
     { label: "Cartão de Débito", value: "DEB" },
@@ -19,9 +22,13 @@ export class OrderComponent implements OnInit {
 
   delivery: number = 8;
 
-  constructor(private orderService: OrderService, private router: Router) {}
+  constructor(
+    private orderService: OrderService,
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
   cartItems(): CarrinhoItem[] {
     return this.orderService.CarrinhoItems();
   }
@@ -47,7 +54,7 @@ export class OrderComponent implements OnInit {
     );
 
     this.orderService.checkOrder(order).subscribe((orderId: Order) => {
-      this.router.navigate(['/order-sumary']);
+      this.router.navigate(["/order-sumary"]);
       this.orderService.clear();
     });
   }

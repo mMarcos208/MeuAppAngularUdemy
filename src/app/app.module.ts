@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { ROUTES } from './app.routes';
 
@@ -19,10 +18,7 @@ import { CarrinhoComponent } from './restaurante-detalhe/carrinho/carrinho.compo
 import { MenuItemComponent } from './restaurante-detalhe/menu-item/menu-item.component';
 import { ReviewsComponent } from './restaurante-detalhe/reviews/reviews.component';
 import { CarrinhoServico } from 'app/restaurante-detalhe/carrinho/carrinho.service';
-import { OrderComponent } from './order/order.component';
-import { OrderItemComponent } from './order/order-item/order-item.component';
 import { OrderService } from 'app/order/orderService';
-import { DeliveryCostComponent } from 'app/order/delivery-cost/delivery-cost.component';
 import { OrderSumayComponent } from './order-sumay/order-sumay.component';
 import { SharedModule } from './shared/shared.module';
 
@@ -39,9 +35,6 @@ import { SharedModule } from './shared/shared.module';
     CarrinhoComponent,
     MenuItemComponent,
     ReviewsComponent,
-    OrderComponent,
-    OrderItemComponent,
-    DeliveryCostComponent,
     OrderSumayComponent
   ],
   imports: [

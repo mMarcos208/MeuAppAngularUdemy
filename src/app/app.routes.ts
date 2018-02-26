@@ -4,7 +4,6 @@ import { RestauranteComponent } from './restaurante/restaurante.component';
 import { RestauranteDetalheComponent } from './restaurante-detalhe/restaurante-detalhe.component';
 import { ReviewsComponent } from 'app/restaurante-detalhe/reviews/reviews.component';
 import { MenuComponent } from 'app/restaurante-detalhe/menu/menu.component';
-import { OrderComponent } from './order/order.component';
 import { OrderSumayComponent } from 'app/order-sumay/order-sumay.component';
 
 export const ROUTES: Routes = [
@@ -17,6 +16,6 @@ export const ROUTES: Routes = [
         {path: 'menu', component: MenuComponent},
         {path: 'reviews', component: ReviewsComponent}
     ]},
-    {path: 'order', component: OrderComponent},
+    {path: 'order', loadChildren: './order/order.module#OrderModule'},
     {path: 'order-sumary', component: OrderSumayComponent}
 ];

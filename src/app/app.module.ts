@@ -20,13 +20,11 @@ import { MenuItemComponent } from './restaurante-detalhe/menu-item/menu-item.com
 import { ReviewsComponent } from './restaurante-detalhe/reviews/reviews.component';
 import { CarrinhoServico } from 'app/restaurante-detalhe/carrinho/carrinho.service';
 import { OrderComponent } from './order/order.component';
-import { InputComponent } from './shared/input/input.component';
-import { RadioComponent } from './shared/radio/radio.component';
 import { OrderItemComponent } from './order/order-item/order-item.component';
 import { OrderService } from 'app/order/orderService';
 import { DeliveryCostComponent } from 'app/order/delivery-cost/delivery-cost.component';
 import { OrderSumayComponent } from './order-sumay/order-sumay.component';
-import { RatingComponent } from './shared/rating/rating.component';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -42,18 +40,14 @@ import { RatingComponent } from './shared/rating/rating.component';
     MenuItemComponent,
     ReviewsComponent,
     OrderComponent,
-    InputComponent,
-    RadioComponent,
     OrderItemComponent,
     DeliveryCostComponent,
-    OrderSumayComponent,
-    RatingComponent
+    OrderSumayComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule,
-    ReactiveFormsModule,
+    SharedModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [RestauranteService, CarrinhoServico, OrderService ,

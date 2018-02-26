@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators, AbstractControl } from "@angular/forms";
 import { RadioOptions } from "../shared/radio/radio.model";
 import { OrderService } from "./orderService";
 import { CarrinhoItem } from "app/restaurante-detalhe/carrinho/carrinho.model";
@@ -39,7 +39,19 @@ export class OrderComponent implements OnInit {
       number: this.formBuilder.control('',[Validators.required, Validators.pattern(this.numberPatern)]),
       optional: this.formBuilder.control(''),
       paymentOption: this.formBuilder.control('',[Validators.required])
-    });
+    }, {validator: OrderComponent.EqualsTo});
+  }
+
+  static EqualsTo(group: AbstractControl): {[key:string]: boolean}{
+    const email = group.get('email');
+    const confirmEmail = group.get('confirmEmail');
+    if(!email || !confirmEmail){
+      return undefined;
+    }
+    if(email.value !== confirmEmail.value){
+      return {emailNotMatch:true};
+    }
+    return undefined;
   }
   cartItems(): CarrinhoItem[] {
     return this.orderService.CarrinhoItems();

@@ -18,7 +18,6 @@ import { MenuItemComponent } from './restaurante-detalhe/menu-item/menu-item.com
 import { ReviewsComponent } from './restaurante-detalhe/reviews/reviews.component';
 import { OrderSumayComponent } from './order-sumay/order-sumay.component';
 import { SharedModule } from './shared/shared.module';
-import { CoreModule } from './core/core.module';
 
 
 @NgModule({
@@ -38,8 +37,7 @@ import { CoreModule } from './core/core.module';
   imports: [
     BrowserModule,
     HttpModule,
-    SharedModule,
-    CoreModule,
+    SharedModule.forRoot(),
     RouterModule.forRoot(ROUTES)
   ],
   providers: [{provide: LOCALE_ID, useValue: 'pt-BR'}],

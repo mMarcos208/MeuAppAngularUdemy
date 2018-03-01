@@ -18,7 +18,7 @@ import { MenuItemComponent } from './restaurante-detalhe/menu-item/menu-item.com
 import { ReviewsComponent } from './restaurante-detalhe/reviews/reviews.component';
 import { OrderSumayComponent } from './order-sumay/order-sumay.component';
 import { SharedModule } from './shared/shared.module';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -37,6 +37,7 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     BrowserModule,
     HttpModule,
+    BrowserAnimationsModule,
     SharedModule.forRoot(),
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
   ],
